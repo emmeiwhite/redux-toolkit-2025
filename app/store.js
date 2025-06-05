@@ -1,6 +1,6 @@
 const configureStore = require('@reduxjs/toolkit').configureStore
 
-const cakeReducer = require('./features/cake/cakeSlice') // Default export
+const { cakeReducer } = require('../features/cake/cakeSlice')
 
 const store = configureStore({
   reducer: {

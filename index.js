@@ -1,8 +1,13 @@
-import store from './app/store'
+const store = require('./app/store')
 
-console.log(store.getState())
+const { cakeActions } = require('./features/cake/cakeSlice')
 
+console.log('Initial State: ', store.getState())
 // subscribe to the store
-store.subscribe(() => {
+const unsubscribe = store.subscribe(() => {
   console.log('Update State: ', store.getState())
 })
+
+store.dispatch(cakeActions.addCake())
+
+unsubscribe()
