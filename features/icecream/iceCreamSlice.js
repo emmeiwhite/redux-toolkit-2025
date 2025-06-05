@@ -18,3 +18,10 @@ const iceCreamSlice = createSlice({
 })
 
 console.log(iceCreamSlice)
+
+// export reducer and action creators
+
+module.exports = {
+  iceCreamReducer: iceCreamSlice.reducer,
+  iceCreamActions: iceCreamSlice.actions
+}
