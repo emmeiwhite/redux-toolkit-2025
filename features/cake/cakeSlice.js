@@ -13,3 +13,5 @@ const cakeSlice = createSlice({
     }
   }
 })
+
+console.log(cakeSlice)
