@@ -20,9 +20,13 @@ const iceCreamSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(cakeActions.addCake, (state, action) => {
       state.numOfIceCreams--
-    }) // We don't have to call addCake, but simply pass it like this cakeActions.addCake, the action-type . But I am a bit confused here, how is addCake an action type
+    })
   }
 })
+
+/**
+ * cakeActions.addCake (without parentheses) is an action creator, and Redux Toolkit reads its .type property.
+ */
 
 console.log('The ActionCreator object')
 console.log(iceCreamSlice.actions)
