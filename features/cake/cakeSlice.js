@@ -17,7 +17,6 @@ const cakeSlice = createSlice({
 console.log(cakeSlice)
 
 // We have the reducers and the action creators from cakeSlice  and we have to export these
-
 module.exports = {
   cakeReducer: cakeSlice.reducer,
   cakeActions: cakeSlice.actions

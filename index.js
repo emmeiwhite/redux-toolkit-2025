@@ -11,5 +11,10 @@ const unsubscribe = store.subscribe(() => {
 
 store.dispatch(cakeActions.addCake())
 store.dispatch(iceCreamActions.orderIceCream())
+store.dispatch(iceCreamActions.orderIceCream())
+store.dispatch(iceCreamActions.orderIceCream())
+store.dispatch(cakeActions.addCake())
+store.dispatch(cakeActions.addCake())
+store.dispatch(cakeActions.addCake())
 
 unsubscribe()
