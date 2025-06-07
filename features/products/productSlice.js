@@ -18,5 +18,19 @@ const fetchProducts = createAsyncThunk('product/fetchProducts', () => {
 // For async-call, we do not need to use reducers
 const productSlice = createSlice({
   name: 'product',
-  initialState
+  initialState,
+  /** --- 2) Handle the thunk in the Slice --- */
+  extraReducers: builder => {
+    builder.addCase(fetchProducts.pending, state => {
+      state.loading = true // state updates means UI will change
+    }),
+      builder.addCase(fetchProducts.fulfilled, (state, action) => {
+        state.loading = false
+        state.products = action.payload // createAsyncThunk will send data as action.payload behind the scenes
+      }),
+      builder.addCase(fetchProducts, (state, action) => {
+        state.loading = false
+        state.error = action.error.message
+      })
+  }
 })

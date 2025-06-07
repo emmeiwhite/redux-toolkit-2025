@@ -43,4 +43,18 @@ builder.addCase('cake/addCake', ...) // ❌ Not ideal
 | `cakeActions.addCake.type` | The string `"cake/addCake"`                             |
 | RTK builder usage          | `builder.addCase(actionCreator, fn)` auto-reads `.type` |
 
-## Question-2: Coming God Willing!
+## Question-2: createAsyncThunk:
+
+- `createAsyncThunk` will automatically dispatch life-cycle actions based on the returned promise!
+
+```js
+const fetchProducts = createAsyncThunk('product/fetchProducts', () => {
+  return axios.get('https://fakestoreapi.com/products').then(res => console.log(res.data))
+})
+```
+
+A Promise can either be:
+
+- Pending
+- Fulfilled
+- Rejected
