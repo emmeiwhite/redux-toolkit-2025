@@ -34,3 +34,14 @@ const productSlice = createSlice({
       })
   }
 })
+
+console.log(productSlice) // The console.log, I love the must
+
+module.exports = productSlice.reducer
+
+// Here we are making an async-call, and productSlice.actions is empty object, we do not have to export the productSlice.actions in async case, instead we'll need to export our fetchProducts instead (whatever variable is assigned to createAsyncThunk fxn).
+
+module.exports = {
+  // Let me do a named export
+  productSlice
+}
