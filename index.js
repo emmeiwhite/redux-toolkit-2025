@@ -14,7 +14,10 @@ const unsubscribe = store.subscribe(() => {
 store.dispatch(cakeActions.addCake())
 // store.dispatch(iceCreamActions.orderIceCream())
 // store.dispatch(cakeActions.addCake())
-store.dispatch(fetchProducts())
+store.dispatch(fetchProducts()).then(() => {
+  console.log('Final state after fetchProducts:', store.getState())
+  unsubscribe()
+})
 console.log(store.getState())
 
 unsubscribe()

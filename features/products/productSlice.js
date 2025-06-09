@@ -11,10 +11,8 @@ const initialState = {
 
 /** --- 1) Define the Async Thunk | To perform async operation --- */
 const fetchProducts = createAsyncThunk('product/fetchProducts', () => {
-  return axios.get('https://fakestoreapi.com/products').then(res => {
-    // console.log(res.data)
-    console.log('WE WILL HANDLE THE DATA HERE!')
-  })
+  return axios.get('https://fakestoreapi.com/products').then(res => res.data)
+  // axios returns promise
 })
 // Async Fetch !!!
 
@@ -38,8 +36,8 @@ const productSlice = createSlice({
   }
 })
 
-console.log(productSlice) // The console.log, I love the must
+console.log(productSlice) // The console.log, I love this very must, as we can see the outputs and export reducer and action creators properly (for sync and async cases)
 
 // Here we are making an async-call, and productSlice.actions is empty object, we do not have to export the productSlice.actions in async case, instead we'll need to export our fetchProducts instead (whatever variable is assigned to createAsyncThunk fxn).
-module.exports = productSlice.reducer
-module.exports.fetchProducts = fetchProducts
+module.exports = productSlice.reducer // default export
+module.exports.fetchProducts = fetchProducts // named export
