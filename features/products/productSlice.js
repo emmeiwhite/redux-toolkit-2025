@@ -11,7 +11,10 @@ const initialState = {
 
 /** --- 1) Define the Async Thunk | To perform async operation --- */
 const fetchProducts = createAsyncThunk('product/fetchProducts', () => {
-  return axios.get('https://fakestoreapi.com/products').then(res => console.log(res.data))
+  return axios.get('https://fakestoreapi.com/products').then(res => {
+    // console.log(res.data)
+    console.log('WE WILL HANDLE THE DATA HERE!')
+  })
 })
 // Async Fetch !!!
 
@@ -28,7 +31,7 @@ const productSlice = createSlice({
         state.loading = false
         state.products = action.payload // createAsyncThunk will send data as action.payload behind the scenes
       }),
-      builder.addCase(fetchProducts, (state, action) => {
+      builder.addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false
         state.error = action.error.message
       })
@@ -37,11 +40,6 @@ const productSlice = createSlice({
 
 console.log(productSlice) // The console.log, I love the must
 
-module.exports = productSlice.reducer
-
 // Here we are making an async-call, and productSlice.actions is empty object, we do not have to export the productSlice.actions in async case, instead we'll need to export our fetchProducts instead (whatever variable is assigned to createAsyncThunk fxn).
-
-module.exports = {
-  // Let me do a named export
-  productSlice
-}
+module.exports = productSlice.reducer
+module.exports.fetchProducts = fetchProducts
